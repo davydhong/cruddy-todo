@@ -36,11 +36,14 @@ const writeCounter = (count, callback) => {
   });
 };
 
-// Public API - Fix this function //////////////////////////////////////////////
-
-exports.getNextUniqueId = () => {
-  counter = counter + 1;
-  return zeroPaddedNumber(counter);
+// Public API - TODO function //////////////////////////////////////////////
+// NOTE: readcounter -> updatecounter -> perform callback (get the new id)
+exports.getNextUniqueId = (callback) => {
+  readCounter( (err, id) => {
+    writeCounter(id+1, (err, id) => {
+      callback(err, id);
+    });
+  });
 };
 
 
