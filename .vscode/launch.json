@@ -6,8 +6,15 @@
     "configurations": [
         {
             "type": "node",
+            "request": "attach",
+            "name": "Attach to Process",
+            "processId": "${command:PickProcess}",
+            "port": 3000
+        },
+        {
+            "type": "node",
             "request": "launch",
-            "name": "just file",
+            "name": "Launch Program",
             "program": "${file}"
         }
     ]
